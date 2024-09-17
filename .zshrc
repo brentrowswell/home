@@ -32,6 +32,8 @@ shell::path::init() {
   export PATH="$PATH:/usr/sbin"
   export PATH="$PATH:/bin"
   export PATH="$PATH:/sbin"
+  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+  export PATH="$PATH:/home/linuxbrew/.linuxbrew/sbin"
 }
 
 homebrew::init() {
@@ -41,9 +43,14 @@ homebrew::init() {
   export HOMEBREW_PREFIX=$homebrew_prefix
 }
 
+rbenv::init() {
+  eval "$(~/.rbenv/bin/rbenv init - zsh)"
+}
+
 zsh::init
 zsh::cdpath::init
 zsh::history::init
 zsh::colors::init
 shell::path::init
-# homebrew::init
+homebrew::init
+rbenv::init
